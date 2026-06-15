@@ -1,0 +1,456 @@
+<!doctype html>
+
+<html
+  lang="en"
+  class="layout-menu-fixed layout-compact"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Komisyon İzleme Sistemi | Komisyonlar Modülü</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/vendor/fonts/iconify-icons.css" />
+
+    <!-- Core CSS -->
+    <!-- build:css assets/vendor/css/theme.css  -->
+
+    <link rel="stylesheet" href="assets/vendor/css/core.css" />
+    <link rel="stylesheet" href="assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+
+    <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- endbuild -->
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+
+    <script src="assets/js/config.js"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+            <div data-include="partials/sidebar.html"></div>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+           <!-- navigation bar sayfası -->
+                 <div data-include="partials/navbar.html"></div>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-fluid flex-grow-1 container-p-y">
+              <div class="row g-6">
+
+
+                </div>
+
+                <!-- FORM ELEMANLARI -->
+
+                <div class="col-12">
+                  <div class="card">
+                    <h5 class="card-header">Personel Görevlendirme Modülü</h5>
+                    <div class="card-body">
+ <form id="personelGorevlendirForm" method="post" action="#">
+
+  <div class="mb-4">
+    <label for="personel" class="form-label">Personel:</label>
+    <select id="personel" name="personel" class="form-select">
+      <option value="">Personel seçin veritabanından gelecek</option>s
+      <option value="ahmet">Ahmet Yılmaz</option>
+      <option value="ayse">Ayşe Demir</option>
+      <option value="mehmet">Mehmet Kara</option>
+    </select>
+  </div>
+   <div class="mb-4">
+    <label  for="uzmanlik" class="form-label">Uzmanlık:</label>
+    <select id="uzmanlik" name="uzmanlik" class="form-select">
+      <option value="">Veritabanından gelecek</option>
+      <option value="yazar">Yazar</option>
+      <option value="bilişim uzmanı">Bilişim Uzmanı</option>
+      <option value="Görsel tasarım">Görsel Tasarım</option>
+    </select>
+  </div>
+   <div class="mb-4" id="anaGorevTuruArea" ">
+  <label for="anaGorevTuru" class="form-label">Ana Görev Türü:</label>
+  <select id="anaGorevTuru" name="anaGorevTuru" class="form-select">
+      <option value="">Görev seçin veritabanından gelecek</option>
+      <option value="yazar">Görsel Üretim</option>
+      <option value="bilişim uzmanı">Dizgi </option>
+      <option value="Görsel tasarım">Görsel Kontrolü</option>
+    </select>
+  </div>
+    <div class="mb-4">
+    <label for="gorevDetay" class="form-label">Görev Ayrıntısı:</label>
+    <textarea id="gorevDetay" name="gorevDetay" class="form-control" rows="3"
+      placeholder="Göreve ilişkin açıklama / ayrıntı giriniz"></textarea>
+  </div>
+  <div class="mb-4">
+  <label for="beceri" class="form-label">Personelin Becerisi:</label>
+  <select id="beceri" name="beceri" class="form-select">
+    <option value="">Beceri seçiniz</option>
+
+    <option value="Photoshop">Photoshop</option>
+    <option value="İllüstrator">İllüstrator</option>
+    <option value="InDesign">InDesign</option>
+    <option value="Camtasia">Camtasia</option>
+
+    <option value="Premiere">Premiere</option>
+    <option value="After Effects">After Effects</option>
+    <option value="Cinema 4D">Cinema 4D</option>
+    <option value="Blender">Blender</option>
+
+    <option value="Maya">Maya</option>
+    <option value="Procreate">Procreate</option>
+    <option value="Construct">Construct</option>
+    <option value="Articulate">Articulate</option>
+
+    <option value="Unity">Unity</option>
+    <option value="Unreal Engine">Unreal Engine</option>
+    <option value="PHP">PHP</option>
+    <option value="Java">Java</option>
+    <option value=".NET">.NET</option>
+    <option value="Diğer">Diğer</option>
+  </select>
+</div>
+
+   <div class="mb-4">
+    <label for="koorinatorluk" class="form-label"> Koordinatorluk Seç:</label>
+    <select id="koorinatorluk" name="koorinatorluk" class="form-select">
+      <option value="">Koordinatorluk veritabanından gelecek</option>
+      <option value="İzmir">İzmir</option>
+      <option value="Ankara">Ankara</option>
+      <option value="İstanbul">İstanbul</option>
+    </select>
+  </div>
+  <div class="mb-4">
+    <label for="komisyon" class="form-label"> Komisyon Seç:</label>
+    <select id="komisyon" name="komisyon" class="form-select">
+      <option value="">Komisyon veritabanından gelecek</option>
+      <option value="Türkçe">Türkçe</option>
+      <option value="İngilizce">İngilizce</option>
+      <option value="Müzik">Müzik</option>
+    </select>
+  </div>
+
+ <div class="mb-4">
+    <label for="verilmeTarihi" class="form-label">Görev Verilme Tarihi:</label>
+    <input type="date" id="verilmeTarihi" name="verilmeTarihi" class="form-control">
+  </div>
+
+  <div class="mb-4">
+    <label for="teslimTarihi" class="form-label">Görev Teslim Tarihi:</label>
+    <input type="date" id="teslimTarihi" name="teslimTarihi" class="form-control">
+  </div>
+
+  <div class="form-check mb-4">
+  <input type="checkbox" id="gorevAktif" name="gorevAktif" class="form-check-input">
+  <label for="gorevAktif" class="form-check-label">Görev Aktiflik</label>
+</div>
+
+<div class="form-check mb-4">
+  <input type="checkbox" id="anaGorev" name="anaGorev" class="form-check-input">
+  <label for="anaGorev" class="form-check-label">Ana Görev</label>
+</div>
+
+<div class="form-check mb-4">
+  <input type="checkbox" id="ikincilGorev" name="ikincilGorev" class="form-check-input">
+  <label for="ikincilGorev" class="form-check-label">İkincil Görev</label>
+</div>
+
+  <!-- ✅ İKİNCİL checkbox'ının HEMEN ALTINDA -->
+<div class="mt-3 mb-4" id="ikincilGorevTuruArea" style="display:none;">
+  <label for="ikincilGorevTuru" class="form-label">İkincil Görev Türü:</label>
+  <select id="ikincilGorevTuru" name="ikincilGorevTuru" class="form-select">
+    <option value="">Görev seçin veritabanından gelecek</option>
+    <option value="gorsel_uretim">Görsel Üretim</option>
+    <option value="dizgi">Dizgi</option>
+    <option value="gorsel_kontrol">Görsel Kontrolü</option>
+  </select>
+</div>
+ <button type="reset" class="btn btn-outline-secondary me-2">Temizle</button>
+  <button type="submit" class="btn btn-primary">Kaydet</button>
+
+</form>
+<hr class="my-4" />
+
+<h6 class="card-title mb-3">Personel Görevlendirme Kayıtları</h6>
+<div class="table-responsive">
+  <table id="personelGorevlendirmeTable" class="table table-striped table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Personel</th>
+        <th>Görev</th>
+        <th>Verilme Tarihi</th>
+        <th>Teslim Tarihi</th>
+        <th>Aktif</th>
+        <th>İşlemler</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+              <div data-include="partials/footer.html"></div>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+
+    <div class="mt-4 text-end">
+
+</div>
+
+    <!-- Core JS -->
+
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="../assets/vendor/js/menu.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+
+    <script src="../assets/js/form-basic-inputs.js"></script>
+
+    <!-- Place this tag before closing body tag for github widget button. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--Menüler eklendi-->
+
+      <script src="assets/js/include.js"></script>
+        <!--Menüler eklendi-->
+<script>
+(function () {
+  const LS_KEY = "personelGorevlendirmeleri";
+
+  const form = document.getElementById("personelGorevlendirForm");
+  const selPersonel = document.getElementById("personel");
+  const selUzmanlik = document.getElementById("uzmanlik");
+  const selAnaGorevTuru = document.getElementById("anaGorevTuru");
+
+  const chkIkincil = document.getElementById("ikincilGorev");
+  const ikincilArea = document.getElementById("ikincilGorevTuruArea");
+  const selIkincilGorevTuru = document.getElementById("ikincilGorevTuru");
+  const inpVerilme = document.getElementById("verilmeTarihi");
+  const inpTeslim = document.getElementById("teslimTarihi");
+  const chkAktif = document.getElementById("gorevAktif");
+  const tbody = document.querySelector("#personelGorevlendirmeTable tbody");
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const resetBtn = form.querySelector('button[type="reset"]');
+
+  let rows = load() || [];
+  let editingId = null;
+
+  render();
+
+  // ==== Yardımcılar ====
+  function getOptText(sel) {
+    const o = sel.options[sel.selectedIndex];
+    return o ? o.text : "";
+  }
+  function escapeHtml(s) {
+    return String(s)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+  function save(arr) {
+    localStorage.setItem(LS_KEY, JSON.stringify(arr));
+  }
+  function load() {
+    try {
+      return JSON.parse(localStorage.getItem(LS_KEY) || "[]");
+    } catch {
+      return [];
+    }
+  }
+  function renderIkincil() {
+  const show = chkIkincil.checked;
+  ikincilArea.style.display = show ? "" : "none";
+  if (!show) selIkincilGorevTuru.value = "";
+}
+chkIkincil.addEventListener("change", renderIkincil);
+renderIkincil();
+form.addEventListener("reset", () => setTimeout(renderIkincil, 0));
+
+
+  // ==== Form Submit ====
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const payload = {
+  id: editingId ?? Date.now(),
+  personelVal: selPersonel.value,
+  personelTxt: getOptText(selPersonel),
+
+  uzmanlikVal: selUzmanlik.value,
+  uzmanlikTxt: getOptText(selUzmanlik),
+
+  anaGorevTuruVal: selAnaGorevTuru.value,
+  anaGorevTuruTxt: getOptText(selAnaGorevTuru),
+
+  ikincilMi: chkIkincil.checked,
+  ikincilGorevTuruVal: chkIkincil.checked ? selIkincilGorevTuru.value : "",
+  ikincilGorevTuruTxt: chkIkincil.checked ? getOptText(selIkincilGorevTuru) : "",
+
+  verilme: inpVerilme.value,
+  teslim: inpTeslim.value,
+  aktif: chkAktif.checked,
+};
+
+    if (!payload.personelVal || !payload.uzmanlikVal || !payload.anaGorevTuruVal) {
+  alert("Personel, Uzmanlık ve Ana Görev Türü zorunludur!");
+  return;
+}
+if (payload.ikincilMi && !payload.ikincilGorevTuruVal) {
+  alert("İkincil görev seçtiyseniz İkincil Görev Türü seçmelisiniz!");
+  return;
+}
+
+
+    if (editingId) {
+      rows = rows.map((r) => (r.id === editingId ? payload : r));
+      editingId = null;
+      submitBtn.textContent = "Kaydet";
+    } else {
+      rows.push(payload);
+    }
+
+    save(rows);
+    render();
+    form.reset();
+  });
+
+  // ==== Reset ====
+  resetBtn.addEventListener("click", function () {
+    editingId = null;
+    submitBtn.textContent = "Kaydet";
+  });
+
+  // ==== Tabloyu Yeniden Çiz ====
+  function render() {
+    tbody.innerHTML = "";
+    if (!rows.length) {
+      tbody.innerHTML =
+        '<tr><td colspan="7" class="text-center text-muted">Henüz kayıt yok.</td></tr>';
+      return;
+    }
+
+    rows.forEach((r, i) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${i + 1}</td>
+        <td>${escapeHtml(r.personelTxt)}</td>
+        <td>${escapeHtml(r.gorevTxt)}</td>
+        <td>${escapeHtml(r.verilme || "-")}</td>
+        <td>${escapeHtml(r.teslim || "-")}</td>
+        <td>${r.aktif ? "Evet" : "Hayır"}</td>
+        <td>
+          <div class="btn-group btn-group-sm" role="group">
+            <button class="btn btn-outline-primary" data-action="edit" data-id="${r.id}">Düzenle</button>
+            <button class="btn btn-outline-danger" data-action="delete" data-id="${r.id}">Sil</button>
+          </div>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // ==== Düzenle / Sil ====
+  tbody.addEventListener("click", function (e) {
+    const btn = e.target.closest("button[data-action]");
+    if (!btn) return;
+
+    const id = Number(btn.dataset.id);
+    const action = btn.dataset.action;
+
+    if (action === "edit") {
+      const r = rows.find((x) => x.id === id);
+      if (!r) return;
+
+      selPersonel.value = r.personelVal;
+      selGorev.value = r.gorevVal;
+      inpVerilme.value = r.verilme;
+      inpTeslim.value = r.teslim;
+      chkAktif.checked = r.aktif;
+
+      editingId = id;
+      submitBtn.textContent = "Güncelle";
+    }
+
+    if (action === "delete") {
+      if (confirm("Bu kaydı silmek istiyor musunuz?")) {
+        rows = rows.filter((x) => x.id !== id);
+        save(rows);
+        render();
+      }
+    }
+  });
+})();
+</script>
+
+  </body>
+</html>

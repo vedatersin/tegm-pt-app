@@ -1,0 +1,131 @@
+﻿/* Notification List Styles */
+.list-group-item {
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.list-group-item.unread {
+    background-color: #fff !important;
+}
+
+.list-group-item.read {
+    background-color: #f8f9fa !important;
+}
+
+.list-group-item.active-item {
+    background-color: #e7e7ff !important;
+    /* Accent color tint */
+    border-left: 3px solid #696cff !important;
+}
+
+.list-group-item:hover {
+    background-color: #f2f2f2;
+}
+
+.avatar-initial {
+    font-weight: 600;
+}
+
+/* Detail Styles */
+#notification-detail-container {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4);
+    margin: 1.5rem;
+    height: calc(100% - 3rem) !important;
+    overflow-y: auto;
+}
+
+.notification-content {
+    color: #566a7f;
+}
+
+/* Bottom-right notification toast */
+.notification-toast-stack {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 1090;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: min(360px, calc(100vw - 2rem));
+}
+
+.notification-toast-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem 2.5rem 1rem 1rem;
+    border: 1px solid rgba(105, 108, 255, 0.22);
+    border-radius: 0.5rem;
+    background: #fff;
+    box-shadow: 0 0.5rem 1.25rem rgba(67, 89, 113, 0.18);
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.notification-toast-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.75rem 1.5rem rgba(67, 89, 113, 0.24);
+}
+
+.notification-toast-avatar {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e7e7ff;
+    color: #696cff;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.notification-toast-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.notification-toast-body {
+    min-width: 0;
+}
+
+.notification-toast-sender {
+    margin-bottom: 0.15rem;
+    color: #384551;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.notification-toast-title {
+    color: #697a8d;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.notification-toast-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #697a8d;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-toast-close:hover {
+    background: #f2f2f6;
+    color: #384551;
+}

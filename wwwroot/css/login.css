@@ -1,0 +1,175 @@
+﻿/* Login Page Layout */
+.login-page {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Soft Light Blue Gradient matching reference */
+    background: linear-gradient(135deg, #a2c2e8 0%, #ccebf4 100%);
+    font-family: 'Public Sans', sans-serif;
+}
+
+canvas#bg-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.login-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 450px;
+    /* Slightly wider */
+    background: #ffffff;
+    /* Pure white */
+    border-radius: 12px;
+    /* Slightly sharper radius */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
+    padding: 3rem 2.5rem;
+    margin: 1rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Logo & Headers */
+.meb-logo {
+    max-width: 100px;
+    /* Bigger logo */
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+.org-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a5568;
+    /* Darker gray/slate */
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+.app-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #4a5568;
+    /* Matched to dark slate, not blue as per image text color */
+    margin-bottom: 2.5rem;
+}
+
+/* Form Elements */
+.form-label {
+    text-align: left;
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: #64748b;
+    /* Slate 500 */
+    font-size: 0.9rem;
+}
+
+.form-control {
+    background-color: #f1f5f9;
+    /* Light gray background like reference */
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    color: #334155;
+    transition: all 0.2s;
+}
+
+.form-control:focus {
+    background-color: #fff;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Input group fix for password toggle */
+.input-group-merge .form-control {
+    border-right: 0;
+}
+
+.input-group-merge .input-group-text {
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-left: 0;
+    color: #64748b;
+    border-radius: 0 6px 6px 0;
+}
+
+.input-group-merge .form-control:focus+.input-group-text {
+    border-color: #3b82f6;
+    background-color: #fff;
+}
+
+/* Checkbox & Links */
+.form-check-input {
+    width: 1.1em;
+    height: 1.1em;
+    margin-top: 0.2em;
+}
+
+.form-check-input:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.login-options-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.text-primary,
+a.text-primary {
+    color: #3b82f6 !important;
+    /* Tailwind Blue 500 */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.text-primary:hover {
+    color: #2563eb !important;
+    text-decoration: underline;
+}
+
+/* Button */
+.btn-primary {
+    background-color: #3b82f6;
+    /* Flat bright blue */
+    border: none;
+    border-radius: 6px;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.5);
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+    box-shadow: 0 6px 8px -1px rgba(59, 130, 246, 0.6);
+    transform: translateY(-1px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Validation */
+.text-danger {
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    text-align: left;
+}
