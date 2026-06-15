@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="tr" class="layout-menu-fixed layout-compact" data-assets-path="assets/" data-template="vertical-menu-template-free">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Komisyon İzleme Sistemi | Görev Detay</title>
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/vendor/fonts/iconify-icons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="assets/vendor/css/core.css" />
+    <link rel="stylesheet" href="assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- Helpers -->
+    <script src="assets/vendor/js/helpers.js"></script>
+    <script src="assets/js/config.js"></script>
+
+    <style>
+      .badge-soft { font-weight: 600; }
+      .badge-soft.badge-info   { background: rgba(105,108,255,.12); color: #696cff; }
+      .badge-soft.badge-success{ background: rgba(40,199,111,.12); color: #28c76f; }
+      .badge-soft.badge-warning{ background: rgba(255,159,67,.12); color: #ff9f43; }
+      .badge-soft.badge-secondary{ background: rgba(133,146,163,.14); color: #8592a3; }
+      .text-muted-2 { color: #a1acb8; }
+      .kv { display:flex; gap:.75rem; align-items:flex-start; padding:.4rem 0; border-bottom:1px solid rgba(67,89,113,.06); }
+      .kv:last-child { border-bottom:0; }
+      .kv .k { min-width: 180px; color:#566a7f; font-weight:600; }
+      .kv .v { flex:1; color:#566a7f; }
+      .timeline { list-style:none; padding-left:0; margin:0; }
+      .timeline li { display:flex; gap:1rem; padding: .75rem 0; border-bottom: 1px solid rgba(67,89,113,.06); }
+      .timeline li:last-child { border-bottom:0; }
+      .timeline .dot { width:10px; height:10px; border-radius:999px; margin-top:.4rem; background:#696cff; flex:0 0 auto; }
+      .timeline .meta { font-size:.8125rem; color:#a1acb8; }
+      .file-pill { display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .6rem; border:1px solid rgba(67,89,113,.15); border-radius:999px; }
+      .file-pill i { color:#696cff; }
+      .sticky-actions { position: sticky; top: 0; z-index: 3; background: #fff; padding-top: .75rem; }
+      .content-wrapper { background: #f5f5f9; }
+    </style>
+  </head>
+
+  <body>
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+
+        <!-- Sidebar -->
+        <div data-include="partials/sidebar.html"></div>
+        <!-- /Sidebar -->
+
+        <div class="layout-page">
+
+          <!-- Navbar -->
+          <div data-include="partials/navbar.html"></div>
+          <!-- /Navbar -->
+
+          <div class="content-wrapper">
+            <div class="container-fluid flex-grow-1 container-p-y">
+
+              <!-- Page Header -->
+              <div class="sticky-actions mb-3">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                  <div>
+                    <h4 class="mb-1">Görev Detay</h4>
+                    <div class="text-muted-2">
+                      <span id="gorevSubtitle">Görev bilgilerini görüntüle ve hızlı güncelle.</span>
+                      <span class="ms-2">•</span>
+                      <span class="ms-2">ID: <span class="fw-semibold" id="gorevId">-</span></span>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-wrap gap-2">
+                    <a class="btn btn-outline-secondary" id="btnGeri" href="gorev_filtrele.html">
+                      <i class="bx bx-left-arrow-alt me-1"></i> Geri
+                    </a>
+                    <a class="btn btn-outline-primary" id="btnDuzenle" href="#">
+                      <i class="bx bx-edit-alt me-1"></i> Düzenle
+                    </a>
+                    <button class="btn btn-outline-secondary" type="button" onclick="window.print()">
+                      <i class="bx bx-printer me-1"></i> Yazdır
+                    </button>
+                    <button class="btn btn-primary" type="button" id="btnDisarAktar">
+                      <i class="bx bx-download me-1"></i> Dışa Aktar
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- /Page Header -->
+
+              <div class="row g-3">
+
+                <!-- Left: Summary + Tabs -->
+                <div class="col-12 col-lg-8">
+
+                  <!-- Summary card -->
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
+                        <div>
+                          <h5 class="mb-1" id="gorevAdi">-</h5>
+                          <div class="text-muted-2" id="gorevKisaAciklama">-</div>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2">
+                          <span class="badge badge-soft badge-info" id="badgeKategori">Kategori</span>
+                          <span class="badge badge-soft badge-secondary" id="badgeBirim">Birim</span>
+                          <span class="badge badge-soft badge-success" id="badgeDurum">Aktif</span>
+                        </div>
+                      </div>
+
+                      <hr class="my-3" />
+
+                      <div class="row g-2">
+                        <div class="col-12 col-md-6">
+                          <div class="kv"><div class="k">Personel</div><div class="v" id="gorevPersonel">-</div></div>
+                          <div class="kv"><div class="k">Görev Türü</div><div class="v" id="gorevTuru">-</div></div>
+                          <div class="kv"><div class="k">Öncelik</div><div class="v" id="gorevOncelik">-</div></div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                          <div class="kv"><div class="k">Başlangıç</div><div class="v" id="gorevBaslangic">-</div></div>
+                          <div class="kv"><div class="k">Bitiş</div><div class="v" id="gorevBitis">-</div></div>
+                          <div class="kv"><div class="k">Son Gün</div><div class="v" id="gorevDeadline">-</div></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /Summary card -->
+
+                  <!-- Tabs -->
+                  <div class="card">
+                    <div class="card-header">
+                      <ul class="nav nav-pills card-header-pills" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabGenel" type="button" role="tab">Genel</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabChecklist" type="button" role="tab">
+                            Checklist <span class="badge bg-label-primary ms-1" id="checkCount">0</span>
+                          </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabEkler" type="button" role="tab">Ekler</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabGecmis" type="button" role="tab">Geçmiş</button>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="card-body">
+                      <div class="tab-content">
+
+                        <!-- Genel -->
+                        <div class="tab-pane fade show active" id="tabGenel" role="tabpanel">
+                          <h6 class="mb-2">Açıklama</h6>
+                          <p class="mb-4" id="gorevAciklama">-</p>
+
+                          <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                              <h6 class="mb-2">Oluşturma Bilgisi</h6>
+                              <div class="kv"><div class="k">Oluşturan</div><div class="v" id="gorevOlusturan">-</div></div>
+                              <div class="kv"><div class="k">Oluşturulma</div><div class="v" id="gorevOlusturmaTarihi">-</div></div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                              <h6 class="mb-2">Güncelleme Bilgisi</h6>
+                              <div class="kv"><div class="k">Son Güncelleyen</div><div class="v" id="gorevGuncelleyen">-</div></div>
+                              <div class="kv"><div class="k">Son Güncelleme</div><div class="v" id="gorevGuncellemeTarihi">-</div></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Checklist -->
+                        <div class="tab-pane fade" id="tabChecklist" role="tabpanel">
+                          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                            <div class="text-muted-2">Maddeleri işaretleyebilir veya yeni madde ekleyebilirsin.</div>
+                            <div class="d-flex gap-2">
+                              <input class="form-control" style="min-width: 220px;" id="inpYeniMadde" placeholder="Yeni madde..." />
+                              <button class="btn btn-primary" type="button" id="btnMaddeEkle">Ekle</button>
+                            </div>
+                          </div>
+
+                          <div class="list-group" id="checklist">
+                            <!-- JS dolduracak -->
+                          </div>
+                        </div>
+
+                        <!-- Ekler -->
+                        <div class="tab-pane fade" id="tabEkler" role="tabpanel">
+                          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                            <div class="text-muted-2">Dosyalar ve bağlantılar.</div>
+                            <div class="d-flex gap-2">
+                              <input class="form-control" type="file" id="inpDosya" />
+                              <button class="btn btn-outline-primary" type="button" id="btnDosyaEkle">Yükle</button>
+                            </div>
+                          </div>
+
+                          <div class="mb-3" id="eklerWrap">
+                            <!-- JS dolduracak -->
+                          </div>
+
+                          <hr class="my-3" />
+
+                          <h6 class="mb-2">Bağlantılar</h6>
+                          <div class="row g-2">
+                            <div class="col-12 col-md-5">
+                              <input class="form-control" id="inpLink" placeholder="https://..." />
+                            </div>
+                            <div class="col-12 col-md-5">
+                              <input class="form-control" id="inpLinkAciklama" placeholder="Açıklama" />
+                            </div>
+                            <div class="col-12 col-md-2 d-grid">
+                              <button class="btn btn-primary" type="button" id="btnLinkEkle">Ekle</button>
+                            </div>
+                          </div>
+                          <div class="mt-3" id="linklerWrap"></div>
+                        </div>
+
+                        <!-- Geçmiş -->
+                        <div class="tab-pane fade" id="tabGecmis" role="tabpanel">
+                          <ul class="timeline" id="gecmisList">
+                            <!-- JS dolduracak -->
+                          </ul>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /Tabs -->
+
+                </div>
+
+                <!-- Right: Quick Update -->
+                <div class="col-12 col-lg-4">
+
+                  <div class="card mb-3">
+                    <h5 class="card-header">Hızlı Güncelle</h5>
+                    <div class="card-body">
+                      <div class="mb-3">
+                        <label class="form-label" for="selDurum">Durum</label>
+                        <select class="form-select" id="selDurum">
+                          <option value="Aktif">Aktif</option>
+                          <option value="Beklemede">Beklemede</option>
+                          <option value="Tamamlandı">Tamamlandı</option>
+                        </select>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label" for="selPersonel">Personel</label>
+                        <select class="form-select" id="selPersonel">
+                          <option>Sevilay S.</option>
+                          <option>Vedat K.</option>
+                          <option>Örnek Personel</option>
+                        </select>
+                        <div class="form-text">Çoklu atama istiyorsan bunu multi-select yapabiliriz.</div>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label" for="txtNot">Not</label>
+                        <textarea class="form-control" id="txtNot" rows="3" placeholder="Kısa not..."></textarea>
+                      </div>
+
+                      <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="button" id="btnHizliKaydet">Güncelle</button>
+                        <a class="btn btn-outline-secondary" href="#" id="btnTamDuzenle">
+                          Tam düzenleme ekranına git
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h5 class="card-header">Özet</h5>
+                    <div class="card-body">
+                      <div class="kv"><div class="k">Checklist</div><div class="v"><span id="checkDone">0</span>/<span id="checkTotal">0</span></div></div>
+                      <div class="kv"><div class="k">Ekler</div><div class="v" id="ekSayisi">0</div></div>
+                      <div class="kv"><div class="k">Link</div><div class="v" id="linkSayisi">0</div></div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div data-include="partials/footer.html"></div>
+            <!-- /Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+
+    <!-- Core JS -->
+    <script src="assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="assets/vendor/libs/popper/popper.js"></script>
+    <script src="assets/vendor/js/bootstrap.js"></script>
+    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="assets/vendor/js/menu.js"></script>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Include partials -->
+    <script src="assets/js/include.js"></script>
+
+    <script>
+      // --- Demo data (backend bağlayınca burası API ile doldurulacak) ---
+      const DEMO = {
+        1: {
+          id: 1,
+          adi: "İçerik kontrol listesi",
+          kisa: "Dijital içerik kalite kontrol",
+          aciklama: "Dijital içeriklerin kalite standartlarına uygunluğunu kontrol etmek için hazırlanan kontrol listesi. İçerik, görsel ve pedagojik kriterler doğrultusunda değerlendirme yapılır.",
+          kategori: "Dijital İçerik",
+          birim: "Komisyon",
+          durum: "Aktif",
+          personel: "Sevilay S.",
+          tur: "Ana Görev",
+          oncelik: "Orta",
+          baslangic: "2025-12-18",
+          bitis: "2025-12-25",
+          deadline: "2025-12-25",
+          olusturan: "Admin",
+          olusturma: "2025-12-18 09:14",
+          guncelleyen: "Sevilay S.",
+          guncelleme: "2025-12-18 10:02",
+          checklist: [
+            { text: "Kazanım uyumu kontrolü", done: true },
+            { text: "İmla ve dil kontrolü", done: false },
+            { text: "Görsel telif kontrolü", done: false }
+          ],
+          ekler: [
+            { name: "kontrol_listesi.pdf", type: "PDF" }
+          ],
+          linkler: [
+            { url: "https://example.com/kriterler", desc: "Kriterler dokümanı" }
+          ],
+          gecmis: [
+            { at: "2025-12-18 10:02", text: "Sevilay S. açıklamayı güncelledi." },
+            { at: "2025-12-18 09:30", text: "Admin görevi Sevilay S.'ye atadı." },
+            { at: "2025-12-18 09:14", text: "Görev oluşturuldu." }
+          ]
+        }
+      };
+
+      // --- Helpers ---
+      const $ = (sel) => document.querySelector(sel);
+      const setText = (sel, val) => { const el = $(sel); if (el) el.textContent = val ?? "-"; };
+
+      function badgeForDurum(durum) {
+        const el = $("#badgeDurum");
+        if (!el) return;
+        el.classList.remove("badge-success","badge-warning","badge-secondary");
+        if (durum === "Aktif") el.classList.add("badge-success");
+        else if (durum === "Beklemede") el.classList.add("badge-warning");
+        else el.classList.add("badge-secondary");
+        el.textContent = durum;
+      }
+
+      function renderChecklist(items) {
+        const wrap = $("#checklist");
+        wrap.innerHTML = "";
+        (items || []).forEach((it, idx) => {
+          const id = "chk_" + idx;
+          const row = document.createElement("label");
+          row.className = "list-group-item d-flex gap-2 align-items-center";
+          row.innerHTML = `
+            <input class="form-check-input mt-0" type="checkbox" id="${id}" ${it.done ? "checked" : ""}>
+            <span class="flex-grow-1">${it.text}</span>
+            <span class="text-muted-2 small">${it.done ? "Tamam" : "Bekliyor"}</span>
+          `;
+          row.querySelector("input").addEventListener("change", (e) => {
+            it.done = e.target.checked;
+            row.querySelector(".small").textContent = it.done ? "Tamam" : "Bekliyor";
+            updateChecklistCounters(items);
+          });
+          wrap.appendChild(row);
+        });
+        updateChecklistCounters(items);
+      }
+
+      function updateChecklistCounters(items) {
+        const total = (items || []).length;
+        const done = (items || []).filter(x => x.done).length;
+        setText("#checkTotal", total);
+        setText("#checkDone", done);
+        setText("#checkCount", total);
+      }
+
+      function renderEkler(items) {
+        const wrap = $("#eklerWrap");
+        wrap.innerHTML = "";
+        (items || []).forEach((f) => {
+          const pill = document.createElement("div");
+          pill.className = "file-pill me-2 mb-2";
+          pill.innerHTML = `<i class="bx bx-file"></i> <span>${f.name}</span> <span class="text-muted-2 small">(${f.type || "Dosya"})</span>`;
+          wrap.appendChild(pill);
+        });
+        setText("#ekSayisi", (items || []).length);
+      }
+
+      function renderLinkler(items) {
+        const wrap = $("#linklerWrap");
+        wrap.innerHTML = "";
+        (items || []).forEach((l) => {
+          const a = document.createElement("a");
+          a.className = "d-block mb-2";
+          a.href = l.url;
+          a.target = "_blank";
+          a.rel = "noreferrer";
+          a.textContent = (l.desc ? l.desc + " — " : "") + l.url;
+          wrap.appendChild(a);
+        });
+        setText("#linkSayisi", (items || []).length);
+      }
+
+      function renderGecmis(items) {
+        const ul = $("#gecmisList");
+        ul.innerHTML = "";
+        (items || []).forEach((e) => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <span class="dot"></span>
+            <div>
+              <div>${e.text}</div>
+              <div class="meta">${e.at}</div>
+            </div>
+          `;
+          ul.appendChild(li);
+        });
+      }
+
+      // --- Init ---
+      (function init(){
+        const params = new URLSearchParams(location.search);
+        const id = params.get("id") || "1"; // demo default
+        const data = DEMO[id] || DEMO[1];
+
+        setText("#gorevId", data.id);
+        setText("#gorevAdi", data.adi);
+        setText("#gorevKisaAciklama", data.kisa);
+        setText("#gorevAciklama", data.aciklama);
+
+        setText("#badgeKategori", data.kategori);
+        setText("#badgeBirim", data.birim);
+        badgeForDurum(data.durum);
+
+        setText("#gorevPersonel", data.personel);
+        setText("#gorevTuru", data.tur);
+        setText("#gorevOncelik", data.oncelik);
+        setText("#gorevBaslangic", data.baslangic);
+        setText("#gorevBitis", data.bitis);
+        setText("#gorevDeadline", data.deadline);
+
+        setText("#gorevOlusturan", data.olusturan);
+        setText("#gorevOlusturmaTarihi", data.olusturma);
+        setText("#gorevGuncelleyen", data.guncelleyen);
+        setText("#gorevGuncellemeTarihi", data.guncelleme);
+
+        // Right card defaults
+        $("#selDurum").value = data.durum;
+        $("#selPersonel").value = data.personel;
+
+        // Links for buttons
+        const editUrl = `gorevler_duzenle.html?id=${encodeURIComponent(data.id)}`;
+        $("#btnDuzenle").href = editUrl;
+        $("#btnTamDuzenle").href = editUrl;
+
+        // Render tabs
+        renderChecklist(data.checklist || []);
+        renderEkler(data.ekler || []);
+        renderLinkler(data.linkler || []);
+        renderGecmis(data.gecmis || []);
+
+        // Actions
+        $("#btnMaddeEkle").addEventListener("click", () => {
+          const val = $("#inpYeniMadde").value.trim();
+          if (!val) return;
+          data.checklist = data.checklist || [];
+          data.checklist.unshift({ text: val, done: false });
+          $("#inpYeniMadde").value = "";
+          renderChecklist(data.checklist);
+        });
+
+        $("#btnLinkEkle").addEventListener("click", () => {
+          const url = $("#inpLink").value.trim();
+          if (!url) return;
+          const desc = $("#inpLinkAciklama").value.trim();
+          data.linkler = data.linkler || [];
+          data.linkler.unshift({ url, desc });
+          $("#inpLink").value = "";
+          $("#inpLinkAciklama").value = "";
+          renderLinkler(data.linkler);
+        });
+
+        $("#btnDosyaEkle").addEventListener("click", () => {
+          const f = $("#inpDosya").files?.[0];
+          if (!f) return;
+          data.ekler = data.ekler || [];
+          data.ekler.unshift({ name: f.name, type: (f.type || "Dosya") });
+          $("#inpDosya").value = "";
+          renderEkler(data.ekler);
+        });
+
+        $("#btnHizliKaydet").addEventListener("click", () => {
+          // Demo: sadece UI güncelliyoruz. Backend bağlayınca burada fetch(...) olacak.
+          data.durum = $("#selDurum").value;
+          data.personel = $("#selPersonel").value;
+          const note = $("#txtNot").value.trim();
+
+          badgeForDurum(data.durum);
+          setText("#gorevPersonel", data.personel);
+
+          // geçmişe ekle
+          data.gecmis = data.gecmis || [];
+          const now = new Date();
+          const ts = now.toISOString().slice(0,16).replace("T"," ");
+          const msg = note
+            ? `Hızlı güncelleme yapıldı. Not: ${note}`
+            : "Hızlı güncelleme yapıldı.";
+          data.gecmis.unshift({ at: ts, text: msg });
+          renderGecmis(data.gecmis);
+
+          // toast yerine basit alert
+          alert("Güncellendi (demo). Backend bağlayınca kaydedilecek.");
+          $("#txtNot").value = "";
+        });
+
+        $("#btnDisarAktar").addEventListener("click", () => {
+          // demo export: JSON indir
+          const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = `gorev_${data.id}_detay.json`;
+          a.click();
+          URL.revokeObjectURL(a.href);
+        });
+      })();
+    </script>
+  </body>
+</html>

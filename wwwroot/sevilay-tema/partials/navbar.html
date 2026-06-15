@@ -1,0 +1,77 @@
+<style>
+  /* NAVBAR RENK GEÇİŞİ — sidebar rengi (#2c3e50) ile uyumlu */
+  #layout-navbar.layout-navbar.navbar {
+    background: linear-gradient(90deg,
+        #2c3e50 0%,
+        /* sidebar rengi ile aynı başlangıç */
+        #34495e 40%,
+        /* biraz açılmış koyu füme */
+        #ecf0f1 100%
+        /* Sneat temasıyla uyumlu açık gri/beyaz */
+      ) !important;
+
+    padding-top: 0px !important;
+    padding-bottom: 6px !important;
+  }
+</style>
+
+<nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+  <div class="layout-menu-toggle navbar-nav align-items-xl-center me-4 me-xl-0 d-xl-none">
+    <a class="nav-item nav-link px-0 me-xl-6" href="javascript:void(0)">
+      <i class="icon-base bx bx-menu icon-md"></i>
+    </a>
+  </div>
+
+  <div class="navbar-nav-right d-flex align-items-center justify-content-end" id="navbar-collapse">
+
+    <ul class="navbar-nav flex-row align-items-center ms-md-auto">
+      <!-- Place this tag where you want the button to render. -->
+      <!-- Kullanıcı girişi yaptığında girilen kişi ve log out olma kısmı -->
+
+
+      <!-- User -->
+      <li class="nav-item navbar-dropdown dropdown-user dropdown">
+        <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
+          <div class="avatar avatar-online">
+            <img src="../assets/img/avatars/4.png" alt class="w-px-40 h-auto rounded-circle" />
+          </div>
+        </a>
+        <!-- Kullanıcı girişi yaptığında girilen kişi ve log out olma kısmı -->
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+            <a class="dropdown-item" href="#">
+              <div class="d-flex">
+                <div class="flex-shrink-0 me-3">
+                  <div class="avatar avatar-online">
+                    <img src="../assets/img/avatars/4.png" alt class="w-px-40 h-auto rounded-circle" />
+                  </div>
+                </div>
+                <div class="flex-grow-1">
+                  <h6 class="mb-0">John Doe</h6>
+                  <small class="text-body-secondary">Admin</small> <!--Admin mi -->
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <div class="dropdown-divider my-1"></div>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="icon-base bx bx-user icon-md me-3"></i><span>Profil</span>
+            </a>
+          </li>
+
+
+
+          <li>
+            <a class="dropdown-item" href="javascript:void(0);">
+              <i class="icon-base bx bx-power-off icon-md me-3"></i><span>Çıkış</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!--/ User -->
+    </ul>
+  </div>
+</nav>
